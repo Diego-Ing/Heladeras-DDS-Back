@@ -1,0 +1,140 @@
+[
+  {
+    "nombre": "Heladera de Salta",
+    "latitud": -24.7825,
+    "longitud": -65.4232,
+    "provincia": "Salta"
+  },
+  {
+    "nombre": "Heladera Obelisco",
+    "latitud": -34.6037,
+    "longitud": -58.3816,
+    "provincia": "Buenos Aires"
+  },
+  {
+    "nombre": "Heladera de Córdoba",
+    "latitud": -31.4201,
+    "longitud": -64.1888,
+    "provincia": "Córdoba"
+  },
+  {
+    "nombre": "Heladera de Mendoza",
+    "latitud": -32.8902,
+    "longitud": -68.8442,
+    "provincia": "Mendoza"
+  },
+  {
+    "nombre": "Heladera de Tucumán",
+    "latitud": -26.8083,
+    "longitud": -65.2176,
+    "provincia": "Tucumán"
+  },
+  {
+    "nombre": "Heladera de Jujuy",
+    "latitud": -23.8512,
+    "longitud": -65.4173,
+    "provincia": "Jujuy"
+  },
+  {
+    "nombre": "Heladera de Entre Ríos",
+    "latitud": -31.7359,
+    "longitud": -60.5238,
+    "provincia": "Entre Ríos"
+  },
+  {
+    "nombre": "Heladera de Santa Fe",
+    "latitud": -31.6333,
+    "longitud": -60.7011,
+    "provincia": "Santa Fe"
+  },
+  {
+    "nombre": "Heladera de Misiones",
+    "latitud": -27.3625,
+    "longitud": -55.8963,
+    "provincia": "Misiones"
+  },
+  {
+    "nombre": "Heladera de La Pampa",
+    "latitud": -36.6167,
+    "longitud": -64.2833,
+    "provincia": "La Pampa"
+  },
+  {
+    "nombre": "Heladera de Neuquén",
+    "latitud": -38.9516,
+    "longitud": -68.0591,
+    "provincia": "Neuquén"
+  },
+  {
+    "nombre": "Heladera de Río Negro",
+    "latitud": -41.1335,
+    "longitud": -71.3103,
+    "provincia": "Río Negro"
+  },
+  {
+    "nombre": "Heladera de Chubut",
+    "latitud": -43.3000,
+    "longitud": -65.1022,
+    "provincia": "Chubut"
+  },
+  {
+    "nombre": "Heladera de Santa Cruz",
+    "latitud": -51.6226,
+    "longitud": -69.2181,
+    "provincia": "Santa Cruz"
+  },
+  {
+    "nombre": "Heladera de Tierra del Fuego",
+    "latitud": -54.8019,
+    "longitud": -68.3030,
+    "provincia": "Tierra del Fuego"
+  },
+  {
+    "nombre": "Heladera de Chaco",
+    "latitud": -27.4513,
+    "longitud": -58.9866,
+    "provincia": "Chaco"
+  },
+  {
+    "nombre": "Heladera de La Rioja",
+    "latitud": -29.4131,
+    "longitud": -66.8565,
+    "provincia": "La Rioja"
+  },
+  {
+    "nombre": "Heladera de Santiago del Estero",
+    "latitud": -27.7951,
+    "longitud": -64.2615,
+    "provincia": "Santiago del Estero"
+  },
+  {
+    "nombre": "Heladera de Formosa",
+    "latitud": -26.1775,
+    "longitud": -58.1781,
+    "provincia": "Formosa"
+  },
+  {
+    "nombre": "Heladera de San Juan",
+    "latitud": -31.5365,
+    "longitud": -68.5389,
+    "provincia": "San Juan"
+  },
+  {
+    "nombre": "Heladera de San Luis",
+    "latitud": -33.2950,
+    "longitud": -66.3356,
+    "provincia": "San Luis"
+  },
+  {
+    "nombre": "Heladera de Catamarca",
+    "latitud": -28.4696,
+    "longitud": -65.7852,
+    "provincia": "Catamarca"
+  },
+  {
+    "nombre": "Heladera de Corrientes",
+    "latitud": -27.4693,
+    "longitud": -57.9963,
+    "provincia": "Corrientes"
+  }
+]
