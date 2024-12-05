@@ -23,7 +23,7 @@ public class StorageService {
         // Inicializa el cliente de Google Cloud Storage
         storage = StorageOptions.newBuilder()
                 .setCredentials(ServiceAccountCredentials.fromStream(
-                        new FileInputStream("leafy-respect-443713-n1-1d09a8beb458.json") // Ruta al archivo JSON
+                        new FileInputStream("/etc/secrets/leafy-respect-443713-n1-1d09a8beb458") // Ruta al archivo JSON
                 ))
                 .build()
                 .getService();
