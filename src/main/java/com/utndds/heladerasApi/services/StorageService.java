@@ -1,6 +1,5 @@
 package com.utndds.heladerasApi.services;
 
-import org.springframework.beans.factory.annotation.Value;
 import com.google.auth.oauth2.ServiceAccountCredentials;
 import com.google.cloud.storage.Blob;
 import com.google.cloud.storage.BlobId;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.ByteArrayInputStream;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
@@ -23,32 +21,29 @@ public class StorageService {
     private final String BUCKET_NAME = "heladerasddsimages"; // Reemplaza con el nombre de tu bucket
 
     private final Storage storage;
-    
+
     private final FirebaseConfig firebaseConfig;
 
-    
     public StorageService(FirebaseConfig firebaseConfig) throws IOException {
         this.firebaseConfig = firebaseConfig;
 
         String jsonCredentials = String.format(
-            "{\"type\":\"%s\",\"project_id\":\"%s\",\"private_key_id\":\"%s\",\"private_key\":\"%s\",\"client_email\":\"%s\",\"client_id\":\"%s\",\"auth_uri\":\"%s\",\"token_uri\":\"%s\",\"auth_provider_x509_cert_url\":\"%s\",\"client_x509_cert_url\":\"%s\",\"universe_domain\":\"%s\"}",
-            "service_account", // Usa 'service_account' si este es el tipo, o usa el valor que necesites
-            firebaseConfig.getProjectId(),
-            firebaseConfig.getPrivateKeyId(),
-            firebaseConfig.getPrivateKey(),
-            firebaseConfig.getClientEmail(),
-            firebaseConfig.getClientId(),
-            firebaseConfig.getAuthUri(),
-            firebaseConfig.getTokenUri(),
-            firebaseConfig.getCertUrl(),
-            firebaseConfig.getClientCertUrl(),
-            firebaseConfig.getUniverseDomain()
-        );
+                "{\"type\":\"%s\",\"project_id\":\"%s\",\"private_key_id\":\"%s\",\"private_key\":\"%s\",\"client_email\":\"%s\",\"client_id\":\"%s\",\"auth_uri\":\"%s\",\"token_uri\":\"%s\",\"auth_provider_x509_cert_url\":\"%s\",\"client_x509_cert_url\":\"%s\",\"universe_domain\":\"%s\"}",
+                "service_account", // Usa 'service_account' si este es el tipo, o usa el valor que necesites
+                firebaseConfig.getProjectId(),
+                firebaseConfig.getPrivateKeyId(),
+                firebaseConfig.getPrivateKey(),
+                firebaseConfig.getClientEmail(),
+                firebaseConfig.getClientId(),
+                firebaseConfig.getAuthUri(),
+                firebaseConfig.getTokenUri(),
+                firebaseConfig.getCertUrl(),
+                firebaseConfig.getClientCertUrl(),
+                firebaseConfig.getUniverseDomain());
 
         storage = StorageOptions.newBuilder()
                 .setCredentials(ServiceAccountCredentials.fromStream(
-                        new ByteArrayInputStream(jsonCredentials.getBytes(StandardCharsets.UTF_8))
-                ))
+                        new ByteArrayInputStream(jsonCredentials.getBytes(StandardCharsets.UTF_8))))
                 .build()
                 .getService();
     }
