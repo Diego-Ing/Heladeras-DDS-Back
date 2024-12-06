@@ -21,7 +21,7 @@ public class RecomendacionPuntosService {
 
     public List<RecomendacionDTO> getRecomendaciones(double latitud, double longitud, double radio) {
         String url = String.format(Locale.US,
-                "http://localhost:8081/mockAPI/recomendarPuntos?latitud=%f&longitud=%f&radio=%f", latitud, longitud,
+                "https://mockapi-31uk.onrender.com/mockAPI/recomendarPuntos?latitud=%f&longitud=%f&radio=%f", latitud, longitud,
                 radio);
 
         ResponseEntity<RecomendacionDTO[]> response = restTemplate.getForEntity(url, RecomendacionDTO[].class);

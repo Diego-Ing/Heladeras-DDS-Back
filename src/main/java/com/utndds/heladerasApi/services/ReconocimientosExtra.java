@@ -23,7 +23,7 @@ public class ReconocimientosExtra {
 
     public List<Persona> recomendarColaboradores(double puntosReq, double viandasDonadasReq, int cantMaxColabs) {
         String url = String.format(
-                "http://localhost:8082/service-2/recomendaciones-colaboradores?puntosReq=%f&viandasDonadasReq=%f&cantMaxColabs=%d",
+                "https://heladeras-dds-recomendador.onrender.com/service-2/recomendaciones-colaboradores?puntosReq=%f&viandasDonadasReq=%f&cantMaxColabs=%d",
                 puntosReq, viandasDonadasReq, cantMaxColabs);
 
         try {
