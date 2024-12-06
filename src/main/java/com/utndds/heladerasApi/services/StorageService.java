@@ -7,6 +7,8 @@ import com.google.cloud.storage.BlobId;
 import com.google.cloud.storage.BlobInfo;
 import com.google.cloud.storage.Storage;
 import com.google.cloud.storage.StorageOptions;
+import com.utndds.heladerasApi.config.FirebaseConfig;
+
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -21,47 +23,28 @@ public class StorageService {
     private final String BUCKET_NAME = "heladerasddsimages"; // Reemplaza con el nombre de tu bucket
 
     private final Storage storage;
-    @Value("${firebase.type}")
-    private String type;
+    
+    private final FirebaseConfig firebaseConfig;
 
-    @Value("${firebase.project_id}")
-    private String projectId;
+    
+    public StorageService(FirebaseConfig firebaseConfig) throws IOException {
+        this.firebaseConfig = firebaseConfig;
 
-    @Value("${firebase.private_key_id}")
-    private String privateKeyId;
-
-    @Value("${firebase.private_key}")
-    private String privateKey;
-
-    @Value("${firebase.client_email}")
-    private String clientEmail;
-
-    @Value("${firebase.client_id}")
-    private String clientId;
-
-    @Value("${firebase.auth_uri}")
-    private String authUri;
-
-    @Value("${firebase.token_uri}")
-    private String tokenUri;
-
-    @Value("${firebase.cert_url}")
-    private String certUrl;
-
-    @Value("${firebase.client_cert_url}")
-    private String clientCertUrl;
-
-    @Value("${firebase.universe_domain}")
-    private String universeDomain;
-
-    public StorageService() throws IOException {
-        // Construir el JSON a partir de las variables de entorno inyectadas
         String jsonCredentials = String.format(
             "{\"type\":\"%s\",\"project_id\":\"%s\",\"private_key_id\":\"%s\",\"private_key\":\"%s\",\"client_email\":\"%s\",\"client_id\":\"%s\",\"auth_uri\":\"%s\",\"token_uri\":\"%s\",\"auth_provider_x509_cert_url\":\"%s\",\"client_x509_cert_url\":\"%s\",\"universe_domain\":\"%s\"}",
-            type, projectId, privateKeyId, privateKey, clientEmail, clientId, authUri, tokenUri, certUrl, clientCertUrl, universeDomain
+            "service_account", // Usa 'service_account' si este es el tipo, o usa el valor que necesites
+            firebaseConfig.getProjectId(),
+            firebaseConfig.getPrivateKeyId(),
+            firebaseConfig.getPrivateKey(),
+            firebaseConfig.getClientEmail(),
+            firebaseConfig.getClientId(),
+            firebaseConfig.getAuthUri(),
+            firebaseConfig.getTokenUri(),
+            firebaseConfig.getCertUrl(),
+            firebaseConfig.getClientCertUrl(),
+            firebaseConfig.getUniverseDomain()
         );
 
-        // Inicializar el cliente de Google Cloud Storage usando las credenciales en formato JSON
         storage = StorageOptions.newBuilder()
                 .setCredentials(ServiceAccountCredentials.fromStream(
                         new ByteArrayInputStream(jsonCredentials.getBytes(StandardCharsets.UTF_8))
