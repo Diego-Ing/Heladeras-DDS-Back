@@ -1,7 +1,7 @@
 com\utndds\heladerasApi\repositories\ColaboracionesRepositories\OfertaRepository.class
 com\utndds\heladerasApi\controllers\CanjesController.class
 com\utndds\heladerasApi\services\Colaboraciones\OfertaService.class
-com\utndds\heladerasApi\services\Validadores\ValidadorContraseÃ±as\Condiciones\LongitudMinima.class
+com\utndds\heladerasApi\services\Validadores\ValidadorContraseñas\Condiciones\LongitudMinima.class
 com\utndds\heladerasApi\services\CargaCSV\ColaboradorFactory.class
 com\utndds\heladerasApi\models\Heladera\Heladera.class
 com\utndds\heladerasApi\models\Rol\PersonaVulnerable.class
@@ -13,7 +13,7 @@ com\utndds\heladerasApi\services\Reportes\GeneradorReportes\Reportes\GeneradorRe
 com\utndds\heladerasApi\services\Colaboraciones\RegistroPersVulnService.class
 com\utndds\heladerasApi\services\RecomendacionPuntosService.class
 com\utndds\heladerasApi\services\ABM\UserService.class
-com\utndds\heladerasApi\services\Validadores\ValidadorContraseÃ±as\ValidadorContraseÃ±a.class
+com\utndds\heladerasApi\services\Validadores\ValidadorContraseñas\ValidadorContraseña.class
 com\utndds\heladerasApi\services\NotificacionApis\MailApi.class
 com\utndds\heladerasApi\models\Rol\Rol.class
 com\utndds\heladerasApi\models\Persona\Contacto\Contacto.class
@@ -32,7 +32,7 @@ com\utndds\heladerasApi\models\Rol\Tecnico\Tecnico.class
 com\utndds\heladerasApi\controllers\PasswordController.class
 com\utndds\heladerasApi\models\Colaboraciones\RegistroPersonaVulnerable.class
 com\utndds\heladerasApi\repositories\VisitaTecnicoRepository.class
-com\utndds\heladerasApi\services\Validadores\ValidadorContraseÃ±as\Condiciones\Condicion.class
+com\utndds\heladerasApi\services\Validadores\ValidadorContraseñas\Condiciones\Condicion.class
 com\utndds\heladerasApi\models\Persona\Persona.class
 com\utndds\heladerasApi\controllers\ColaboracionController.class
 com\utndds\heladerasApi\config\AppConfig.class
@@ -49,7 +49,7 @@ com\utndds\heladerasApi\models\Persona\Contacto\Telegram.class
 com\utndds\heladerasApi\DTOs\VisitaTecnicoDTO.class
 com\utndds\heladerasApi\controllers\HomeController.class
 com\utndds\heladerasApi\DTOs\AreaRecomendacionDTO.class
-com\utndds\heladerasApi\services\Validadores\ValidadorContraseÃ±as\Condiciones\PeoresContraseÃ±as.class
+com\utndds\heladerasApi\services\Validadores\ValidadorContraseñas\Condiciones\PeoresContraseñas.class
 com\utndds\heladerasApi\models\Reportes\ViandasMovidasPorColaborador.class
 com\utndds\heladerasApi\services\Colaboraciones\DistribucionViandasService.class
 com\utndds\heladerasApi\models\Persona\Contacto\Telefono.class
@@ -82,7 +82,7 @@ com\utndds\heladerasApi\services\ABM\TecnicoService.class
 com\utndds\heladerasApi\services\Canjes\CalculadoraPuntosService.class
 com\utndds\heladerasApi\models\Persona\Documento.class
 com\utndds\heladerasApi\repositories\ColaboracionesRepositories\ObtencionHeladeraRepository.class
-com\utndds\heladerasApi\services\Validadores\ValidadorContraseÃ±as\Condiciones\CaracteresEspeciales.class
+com\utndds\heladerasApi\services\Validadores\ValidadorContraseñas\Condiciones\CaracteresEspeciales.class
 com\utndds\heladerasApi\models\Observer\ObservadorSuscripcion.class
 com\utndds\heladerasApi\repositories\ContactoRepository.class
 com\utndds\heladerasApi\repositories\Incidentes\IncidenteRepository.class
