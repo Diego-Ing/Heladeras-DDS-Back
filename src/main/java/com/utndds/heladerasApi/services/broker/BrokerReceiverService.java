@@ -2,12 +2,10 @@ package com.utndds.heladerasApi.services.broker;
 
 import org.springframework.stereotype.Service;
 
-import com.utndds.heladerasApi.models.Tarjetas.Tarjeta;
 import com.utndds.heladerasApi.models.Tarjetas.TarjetaPersVuln;
 import com.utndds.heladerasApi.repositories.HeladeraRepository;
 import com.utndds.heladerasApi.repositories.TarjetasRepositories.TarjetaRepository;
 import com.utndds.heladerasApi.models.Tarjetas.TarjetaColaborador;
-import com.utndds.heladerasApi.models.Heladera.Heladera;
 import com.utndds.heladerasApi.services.AperturaService;
 import com.utndds.heladerasApi.services.Sensores.SensorMovimientoService;
 import com.utndds.heladerasApi.services.Sensores.SensorTemperaturaService;
@@ -17,7 +15,6 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener; // Para Rabbit
 import org.springframework.beans.factory.annotation.Autowired; // Para Autowired
 import java.io.IOException; // Para IOException
 import java.util.Map; // Para Map
-import java.util.Optional;
 
 @Service
 public class BrokerReceiverService {
@@ -28,7 +25,7 @@ public class BrokerReceiverService {
     @Autowired
     private SensorMovimientoService sensorMovimientoService;
     @Autowired
-    private TarjetaRepository tarjetaReposity;
+    private TarjetaRepository tarjetaRepository;
     @Autowired
     private HeladeraRepository heladeraRepository;
 
@@ -40,7 +37,7 @@ public class BrokerReceiverService {
         System.out.println("Mensaje recibido (temperatura): " + mensaje);
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            Map<String, Object> data = objectMapper.readValue(mensaje, new TypeReference<Map<String, Object>>() {
+            Map<String, Object> data = objectMapper.readValue(mensaje, new TypeReference<>() {
             });
             Long sensorId = ((Number) data.get("sensorId")).longValue();
             Double temperatura = ((Number) data.get("temperatura")).doubleValue();
@@ -56,7 +53,7 @@ public class BrokerReceiverService {
         System.out.println("Mensaje recibido (movimiento): " + mensaje);
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            Map<String, Object> data = objectMapper.readValue(mensaje, new TypeReference<Map<String, Object>>() {
+            Map<String, Object> data = objectMapper.readValue(mensaje, new TypeReference<>() {
             });
             Long sensorId = ((Number) data.get("sensorId")).longValue();
             String tipoAlerta = (String) data.get("tipo");
@@ -73,33 +70,25 @@ public class BrokerReceiverService {
         ObjectMapper objectMapper = new ObjectMapper();
 
         try {
-            // Parse the message from JSON
-            Map<String, Object> data = objectMapper.readValue(mensaje, new TypeReference<Map<String, Object>>() {
+            Map<String, Object> data = objectMapper.readValue(mensaje, new TypeReference<>() {
             });
             Long heladeraId = ((Number) data.get("heladeraId")).longValue();
             Long tarjetaId = ((Number) data.get("tarjetaId")).longValue();
 
-            // Obtener la tarjeta y heladera por ID
-            Optional<Tarjeta> tarjetaOpt = tarjetaReposity.findById(tarjetaId);
-            Optional<Heladera> heladeraOpt = heladeraRepository.findById(heladeraId);
-
-            if (tarjetaOpt.isPresent() && heladeraOpt.isPresent()) {
-                Tarjeta tarjeta = tarjetaOpt.get();
-                Heladera heladera = heladeraOpt.get();
-
-                // Verificar el tipo de la tarjeta y llamar al servicio adecuado
-                String resultado;
-                if (tarjeta instanceof TarjetaColaborador) {
-                    resultado = aperturaService.manejarAperturaColaborador(heladera, tarjeta);
-                } else if (tarjeta instanceof TarjetaPersVuln) {
-                    resultado = aperturaService.manejarAperturaPersonaVulnerable(heladera, tarjeta);
-                } else {
-                    resultado = "Tipo de tarjeta no válido.";
-                }
-                System.out.println("Resultado: " + resultado);
-            } else {
-                System.out.println("Heladera o Tarjeta no encontrada.");
-            }
+            tarjetaRepository.findById(tarjetaId)
+                    .ifPresentOrElse(tarjeta -> heladeraRepository.findById(heladeraId).ifPresentOrElse(heladera -> {
+                        String resultado;
+                        if (tarjeta instanceof TarjetaColaborador) {
+                            resultado = aperturaService.manejarAperturaColaborador(heladera, tarjeta);
+                        } else if (tarjeta instanceof TarjetaPersVuln) {
+                            resultado = aperturaService.manejarAperturaPersonaVulnerable(heladera, tarjeta);
+                        } else {
+                            resultado = "Tipo de tarjeta no válido.";
+                        }
+                        System.out.println("Resultado: " + resultado);
+                    },
+                            () -> System.out.println("Heladera no encontrada.")),
+                            () -> System.out.println("Tarjeta no encontrada."));
         } catch (IOException e) {
             System.err.println("Error al procesar el mensaje: " + e.getMessage());
         }

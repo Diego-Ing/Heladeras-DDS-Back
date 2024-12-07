@@ -60,7 +60,6 @@ com\utndds\heladerasApi\DTOs\SuscripcionDTO.class
 com\utndds\heladerasApi\models\Persona\PersonaHumana.class
 com\utndds\heladerasApi\config\FirebaseConfig.class
 com\utndds\heladerasApi\services\ABM\HeladeraService.class
-com\utndds\heladerasApi\config\RabbitMQConfig.class
 com\utndds\heladerasApi\models\Enums\MotivoApertura.class
 com\utndds\heladerasApi\models\Reportes\FallasPorHeladera.class
 com\utndds\heladerasApi\repositories\CanjeRepository.class
