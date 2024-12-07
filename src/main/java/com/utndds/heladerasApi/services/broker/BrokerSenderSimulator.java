@@ -43,8 +43,8 @@ public class BrokerSenderSimulator {
 
     @PostConstruct
     public void init() {
-        scheduler.scheduleAtFixedRate(this::enviarTemperaturas, 0, 15, TimeUnit.SECONDS);
-        scheduler.scheduleAtFixedRate(this::enviarSenalMovimiento, 0, 15, TimeUnit.SECONDS);
+        scheduler.scheduleAtFixedRate(this::enviarTemperaturas, 0, 120, TimeUnit.SECONDS);
+        scheduler.scheduleAtFixedRate(this::enviarSenalMovimiento, 0, 120, TimeUnit.SECONDS);
         System.out.println("Scheduler iniciado. Enviando datos de sensores.");
     }
 
