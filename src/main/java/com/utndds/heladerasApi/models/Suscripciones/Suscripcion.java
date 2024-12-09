@@ -43,7 +43,9 @@ public class Suscripcion implements ObservadorSuscripcion {
     }
 
     public void verificarNotificaciones() {
+        System.out.println("Verificando notificaciones para la heladera: " + this.heladera.getId());
         for (Evento evento : notificacionesDeseadas) {
+            System.out.println("Verificando evento: " + evento.getId());
             evento.verificarEvento(this.heladera);
         }
     }

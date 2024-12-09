@@ -50,15 +50,10 @@ public class IncidenteService {
         Heladera heladera = heladeraRepository.findById(fallaTecnicaDTO.getHeladeraId())
                 .orElseThrow(() -> new RuntimeException(
                         "Heladera no encontrada con ID: " + fallaTecnicaDTO.getHeladeraId()));
-
+        
         // Create a new instance of FallaTecnica with the DTO data
-        FallaTecnica fallaTecnica = new FallaTecnica();
-        fallaTecnica.setColaborador(colaborador);
-        fallaTecnica.setHeladera(heladera); // Set the Heladera object
-        fallaTecnica.setDescripcion(fallaTecnicaDTO.getDescripcion());// Set the description
-        fallaTecnica.setFecha(fallaTecnicaDTO.getFecha()); // Set the report date
-        fallaTecnica.setFoto(fallaTecnicaDTO.getFoto()); // Set the photo
-
+        FallaTecnica fallaTecnica = new FallaTecnica(heladera, colaborador, fallaTecnicaDTO.getDescripcion(),
+                fallaTecnicaDTO.getFoto());
         // Save the technical failure in the incident repository
         incidenteRepository.save(fallaTecnica);
 
@@ -88,26 +83,26 @@ public class IncidenteService {
     public void registrarVisita(String tecnicoUUID, VisitaTecnicoDTO visitaDTO) {
         try {
             // Buscar el técnico por UUID
-            System.out.println("Buscando técnico con UUID: " + tecnicoUUID);
+            
             Tecnico tecnico = tecnicoRepository.findByUUID(tecnicoUUID)
                     .orElseThrow(() -> new EntityNotFoundException("Técnico no encontrado con UUID " + tecnicoUUID));
-            System.out.println("Técnico encontrado: " + tecnico);
+            
 
             // Buscar el incidente por ID
-            System.out.println("Buscando incidente con ID: " + visitaDTO.getIncidenteId());
+            
             FallaTecnica fallaTecnica = fallaTecnicaRepository.findById(visitaDTO.getIncidenteId())
                     .orElseThrow(() -> new EntityNotFoundException(
                             "falla tecnica no encontrado con ID " + visitaDTO.getIncidenteId()));
-            System.out.println("falla tecnica encontrado: " + fallaTecnica);
+            
 
             // Crear y guardar la visita del técnico
-            System.out.println("Creando visita del técnico...");
+            
             VisitaTecnico visitaTecnico = new VisitaTecnico(tecnico, fallaTecnica, visitaDTO.getComentario(),
                     visitaDTO.getFoto(), visitaDTO.isSolucionado());
-            System.out.println("Visita del técnico creada: " + visitaTecnico);
+            
 
             visitaTecnicoRepository.save(visitaTecnico);
-            System.out.println("Visita del técnico guardada con éxito.");
+            
 
         } catch (EntityNotFoundException e) {
             // Capturar errores específicos de entidades no encontradas

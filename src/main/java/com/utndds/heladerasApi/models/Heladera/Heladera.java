@@ -98,7 +98,9 @@ public class Heladera implements ObservadorHeladera {
     }
 
     public void verificarSuscripciones() {
+        
         for (Suscripcion suscripcion : suscriptores) {
+            
             suscripcion.verificarNotificaciones();
         }
     }

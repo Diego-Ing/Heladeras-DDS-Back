@@ -24,11 +24,12 @@ public class Desperfecto extends Evento {
     };
 
     protected void notificarEvento(Heladera heladera) {
+        
         List<Contacto> contactos = this.suscripcion.getColaborador().getPersona().getMediosContacto();
         for (Contacto contacto : contactos) {
             if (this.mediosDeseados.contains(contacto)) {
-                contacto.notificar("Se notifico a " + this.suscripcion.getColaborador().getPersona().getNombre()
-                        + " que hay un desperfecto en la heladera: " + heladera.getPunto().getDireccion());
+                contacto.notificar("Hola " + this.suscripcion.getColaborador().getPersona().getNombre()
+                        + " hay un desperfecto en la heladera: " + heladera.getPunto().getDireccion());
             }
         }
 
