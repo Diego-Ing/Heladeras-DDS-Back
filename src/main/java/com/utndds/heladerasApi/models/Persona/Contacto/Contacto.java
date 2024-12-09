@@ -3,7 +3,9 @@ package com.utndds.heladerasApi.models.Persona.Contacto;
 import com.utndds.heladerasApi.models.Persona.Persona;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
+@Getter
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "tipo_contacto")

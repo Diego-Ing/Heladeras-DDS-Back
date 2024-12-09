@@ -119,6 +119,7 @@ public class UserService {
         return contactos;
     }
 
+
     private Documento crearDocumento(String tipo, String numero) {
         if (tipo == null || tipo.isEmpty()) {
             throw new IllegalArgumentException("El tipo de documento no puede estar vacío.");

@@ -11,5 +11,5 @@ import com.utndds.heladerasApi.models.Suscripciones.Suscripcion;
 public interface SuscripcionRepository extends JpaRepository<Suscripcion, Long> {
 
     Suscripcion findByColaboradorAndHeladera(Colaborador colaborador, Heladera heladera);
-    // Puedes agregar métodos personalizados aquí si lo deseas
+    
 }
