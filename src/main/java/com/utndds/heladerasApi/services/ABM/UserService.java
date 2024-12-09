@@ -121,13 +121,20 @@ public class UserService {
 
 
     private Documento crearDocumento(String tipo, String numero) {
-        if (tipo == null || tipo.isEmpty()) {
-            throw new IllegalArgumentException("El tipo de documento no puede estar vacío.");
+
+        if ((tipo == null || tipo.isEmpty()) && (numero == null || numero.isEmpty())) {
+            return null;
         }
 
         if (numero == null || numero.isEmpty() || !numero.matches("\\d{1,10}")) {
             throw new IllegalArgumentException(
                     "El número de documento debe ser válido y contener entre 1 y 10 dígitos.");
+        }
+        if (tipo == null && numero != null) {
+            return null;
+        }
+        if (tipo != null && numero == null) {
+            return null;
         }
 
         return new Documento(tipo.toUpperCase(), numero);
