@@ -44,5 +44,6 @@ public abstract class Incidente {
 
     private void desactivarHeladera() {
         this.heladera.setFuncionando(false);
+        this.heladera.verificarSuscripciones();
     }
 }
