@@ -40,6 +40,7 @@ public class SecurityConfig {
                         .requestMatchers("/roles/**").permitAll()
                         .requestMatchers("/callback").permitAll()
                         .requestMatchers("/validar-contraseña").permitAll()
+                        .requestMatchers("/users/contactos").hasAnyAuthority("SCOPE_ROLE_COLLABORATOR")
                         .requestMatchers("/tecnicos/**").hasAnyAuthority("SCOPE_ROLE_ADMIN")
                         .requestMatchers("/reportes/**").hasAnyAuthority("SCOPE_ROLE_ADMIN")
                         .requestMatchers("/suscripciones/**").hasAnyAuthority("SCOPE_ROLE_COLLABORATOR")
