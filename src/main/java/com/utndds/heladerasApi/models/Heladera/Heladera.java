@@ -97,10 +97,20 @@ public class Heladera implements ObservadorHeladera {
         }
     }
 
+    public void sacarViandas(int cantidad) {
+        this.cantViandas -= cantidad;
+        this.verificarSuscripciones();
+    }
+
+    public void agregarViandas(int cantidad) {
+        this.cantViandas += cantidad;
+        this.verificarSuscripciones();
+    }
+
     public void verificarSuscripciones() {
-        
+
         for (Suscripcion suscripcion : suscriptores) {
-            
+
             suscripcion.verificarNotificaciones();
         }
     }

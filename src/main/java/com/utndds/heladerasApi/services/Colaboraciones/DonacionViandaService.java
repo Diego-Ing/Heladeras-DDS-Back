@@ -52,6 +52,8 @@ public class DonacionViandaService {
                 vianda.setPeso(donacionViandaDTO.getPeso());
                 vianda.setHeladera(heladera);
 
+                heladera.agregarVianda(); // Aumenta el inventario de viandas
+
                 // Guardar la vianda en la base de datos
                 // viandaRepository.save(vianda);
 

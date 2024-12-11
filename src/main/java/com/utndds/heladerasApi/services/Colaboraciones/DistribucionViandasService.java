@@ -47,13 +47,11 @@ public class DistribucionViandasService {
                         throw new IllegalArgumentException("La heladera de origen y destino no pueden ser la misma");
                 }
                 if (heladeraOrigen.getCantViandas() < distribucionViandasDTO.getCantidadViandasAMover()) {
-                        
+
                         throw new IllegalArgumentException("La heladera de origen no tiene suficientes viandas");
                 } else {
-                        heladeraOrigen.setCantViandas(heladeraOrigen.getCantViandas()
-                                        - distribucionViandasDTO.getCantidadViandasAMover());
-                        heladeraDestino.setCantViandas(heladeraDestino.getCantViandas()
-                                        + distribucionViandasDTO.getCantidadViandasAMover());
+                        heladeraOrigen.sacarViandas(distribucionViandasDTO.getCantidadViandasAMover());
+                        heladeraDestino.agregarViandas(distribucionViandasDTO.getCantidadViandasAMover());
                         DistribucionViandas distribucionViandas = new DistribucionViandas();
                         distribucionViandas.setColaborador(colaborador);
                         distribucionViandas.setHeladeraOrigen(heladeraOrigen);
