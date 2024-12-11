@@ -26,6 +26,11 @@ public class HeladeraController {
     @Autowired
     private RecomendacionPuntosService recomendacionService;
 
+    @PostMapping("/activar-heladeras")
+    public void activarHeladeras() {
+        heladeraService.activarTodasLasHeladeras();
+    }
+
     // Endpoint para recomendar puntos de colocación de heladeras
     @PreAuthorize("hasAuthority('SCOPE_ROLE_COLLABORATOR')")
     @PostMapping("/recomendarPuntos")
@@ -64,6 +69,7 @@ public class HeladeraController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }
+
     @GetMapping("/listaHeladeras")
     public List<HeladeraDTO> obtenerHeladeras() {
         return heladeraService.obtenerHeladerasDTO();

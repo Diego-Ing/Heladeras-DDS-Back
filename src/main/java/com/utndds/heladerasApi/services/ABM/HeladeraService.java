@@ -48,9 +48,15 @@ public class HeladeraService {
             throw new EntityNotFoundException("Heladera no encontrada con el ID: " + id);
         }
     }
+
     public List<HeladeraDTO> obtenerHeladerasDTO() {
-    return heladeraRepository.findAll().stream()
-            .map(heladera -> new HeladeraDTO(heladera.getId(), heladera.getPunto().getNombrePunto()))
-            .collect(Collectors.toList());
-}
+        return heladeraRepository.findAll().stream()
+                .map(heladera -> new HeladeraDTO(heladera.getId(), heladera.getPunto().getNombrePunto()))
+                .collect(Collectors.toList());
+    }
+
+    public void activarTodasLasHeladeras() {
+        heladeraRepository.activarTodas();
+    }
+
 }
