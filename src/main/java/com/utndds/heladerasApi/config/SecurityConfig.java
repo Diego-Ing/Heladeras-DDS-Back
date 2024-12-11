@@ -35,6 +35,7 @@ public class SecurityConfig {
                                                                                    // personalizada
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/").permitAll()
+                        .requestMatchers("/heladeras/activar-heladeras").permitAll()
                         .requestMatchers("/notificacion/**").permitAll()
                         .requestMatchers("/api/storage/**").permitAll()
                         .requestMatchers("/roles/**").permitAll()
