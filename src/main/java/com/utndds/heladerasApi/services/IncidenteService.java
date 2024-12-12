@@ -102,6 +102,7 @@ public class IncidenteService {
             
 
             visitaTecnicoRepository.save(visitaTecnico);
+            fallaTecnicaRepository.save(fallaTecnica);
             
 
         } catch (EntityNotFoundException e) {
