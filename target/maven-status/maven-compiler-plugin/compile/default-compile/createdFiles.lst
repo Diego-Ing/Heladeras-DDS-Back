@@ -143,7 +143,6 @@ com\utndds\heladerasApi\repositories\ColaboracionesRepositories\RegistroPersonaV
 com\utndds\heladerasApi\config\SecurityConfig.class
 com\utndds\heladerasApi\repositories\SensoresRepositories\SensoresRepository.class
 com\utndds\heladerasApi\repositories\reportesRepositories\ReporteViandasMovidasColaboradorRepository.class
-com\utndds\heladerasApi\services\NotificacionApis\MailApi$1.class
 com\utndds\heladerasApi\models\Tarjetas\Tarjeta.class
 com\utndds\heladerasApi\repositories\HeladeraRepository.class
 com\utndds\heladerasApi\models\Heladera\UbicacionGoogleMaps.class
