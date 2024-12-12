@@ -1,5 +1,7 @@
 package com.utndds.heladerasApi.models.Persona.Contacto;
 
+import com.utndds.heladerasApi.services.NotificacionApis.MailApi;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -15,6 +17,6 @@ public class Email extends Contacto {
 
     @Override
     public void notificar(String mensaje) {
-        System.out.println("SE NOTIFICO CON EXITO AL EMAIL: " + this.valor);
+        MailApi.sendEmail(mensaje, this.valor);
     }
 }
