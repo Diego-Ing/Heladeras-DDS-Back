@@ -12,7 +12,7 @@ public class MailApi {
         try {
             RestTemplate restTemplate = new RestTemplate();
             MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-            params.add("message", message);
+            params.add("mensaje", message);
             params.add("correo", correo);
 
             restTemplate.postForObject(BASE_URL, params, String.class);
